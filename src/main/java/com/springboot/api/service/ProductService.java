@@ -16,7 +16,7 @@ public class ProductService {
 	
 	public List<Product> fetchProductByVendorId(long vid) {
 		 
-		return productRepository.findByVendorId(vid);
+		return productRepository.findByVendorId(vid); 
 	}
 
 }
