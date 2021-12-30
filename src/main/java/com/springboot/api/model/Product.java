@@ -29,7 +29,7 @@ public class Product {
 	@Column(name = "price")
 	private double price; 
 	
-	@Lob
+	
 	private String description;
 	
 	@Temporal(TemporalType.DATE)

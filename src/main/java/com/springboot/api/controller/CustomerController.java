@@ -8,21 +8,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.api.model.Customer;
-import com.springboot.api.repository.CustomerRepository;
+import com.springboot.api.model.Product;
 import com.springboot.api.service.CustomerService;
+import com.springboot.api.service.ProductService;
 
 @RestController
 public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
-	 
+	 @Autowired
+	private ProductService productService; 
 	@PostMapping("/customer")
 	public Customer insertCustomer(@RequestBody Customer customer) {
 		return customerService.save(customer); 
@@ -66,6 +67,28 @@ public class CustomerController {
 	@GetMapping("/customer/city")
 	public List<Customer> findByCity(@RequestParam("city") String city) {
 		return customerService.findByCity(city);		
+	}
+	
+	@PostMapping("/customer/product/purchase/{cid}/{pid}")
+	public Customer purchaseProduct(@PathVariable("cid") long cid, 
+			@PathVariable("pid") long pid) {
+		
+		//at this point how many products has customer {cid} purchased?? 
+		//10 + 1 = 11 -> save 11 
+		Customer c = customerService.getById(cid);
+		List<Product> list = c.getProducts(); //0
+		 
+		//fetch product details from the DB based on {pid}
+		Product p = productService.getProduct(pid); 
+		 
+		//add the new product to the list 
+		list.add(p); //1 
+		
+		//set this list to customer c
+		c.setProducts(list);
+		
+		//save c in the Db 
+		return customerService.save(c);
 	}
 }
 

@@ -43,4 +43,19 @@ public class ProductController {
 	public List<Product> fetchProductByVendorId(@PathVariable("vid") long vid) {
 		return productService.fetchProductByVendorId(vid);
 	}
+	
+	@GetMapping("/product")
+	public List<Product> getAllProduct() {
+		return productService.getAllProduct();
+	}
+	
+	
 }
+
+
+
+
+
+
+
+

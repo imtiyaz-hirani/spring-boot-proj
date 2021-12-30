@@ -15,8 +15,15 @@ public class ProductService {
 	private ProductRepository productRepository;
 	
 	public List<Product> fetchProductByVendorId(long vid) {
-		 
 		return productRepository.findByVendorId(vid); 
+	}
+
+	public List<Product> getAllProduct() {
+		return productRepository.findAll();
+	}
+	
+	public Product getProduct(long pid) {
+		return productRepository.getOneById(pid);
 	}
 
 }
