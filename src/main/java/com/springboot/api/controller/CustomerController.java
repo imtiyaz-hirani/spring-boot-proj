@@ -90,6 +90,14 @@ public class CustomerController {
 		//save c in the Db 
 		return customerService.save(c);
 	}
+	
+	
+	@GetMapping("/customer/product/{pid}")
+	public List<Customer> getCustomerByProductId(@PathVariable("pid") long pid) {
+		
+		return customerService.getCustomerByProductId(pid);
+	}
+	
 }
 
 

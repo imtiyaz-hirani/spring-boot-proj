@@ -38,5 +38,9 @@ public class CustomerService {
 		return customerRepository.findByCity(city);
 	}
 
+	public List<Customer> getCustomerByProductId(long pid) {
+		return customerRepository.findByProductsId(pid);
+	}
+
 	
 }
