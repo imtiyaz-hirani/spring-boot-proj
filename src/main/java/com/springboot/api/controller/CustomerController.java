@@ -104,6 +104,14 @@ public class CustomerController {
 		return customerService.getCustomerByVendor(vid);
 	}
 	
+	
+	@GetMapping("/customer/review/{city}/{rating}")
+	public List<Customer> getCustomerByReviewRatingAndCity(
+			@PathVariable("city") String city, 
+			@PathVariable("rating") double rating){
+		
+		return customerService.getCustomerByReviewRatingAndCity(city,rating); 
+	}
 }
 
 
