@@ -42,5 +42,9 @@ public class CustomerService {
 		return customerRepository.findByProductsId(pid);
 	}
 
+	public List<Customer> getCustomerByVendor(long vid) {
+		return customerRepository.getCustomerByVendor(vid);
+	}
+
 	
 }

@@ -50,4 +50,6 @@ public class ReviewController {
 	public List<Review> getReviewByCustomer(@PathVariable("cid") long cid) {
 		return reviewService.getReviewByCustomer(cid); 
 	}
+	
+	
 }

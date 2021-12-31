@@ -98,6 +98,12 @@ public class CustomerController {
 		return customerService.getCustomerByProductId(pid);
 	}
 	
+	
+	@GetMapping("/customer/vendor/{vid}")
+	public List<Customer> getCustomerByVendor(@PathVariable("vid") long vid) {
+		return customerService.getCustomerByVendor(vid);
+	}
+	
 }
 
 
