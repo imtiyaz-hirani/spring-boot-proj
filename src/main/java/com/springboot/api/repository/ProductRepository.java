@@ -14,7 +14,5 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 	@Transactional
 	List<Product> findByVendorId(long id);
 	
-	@Transactional
-	@Query("select p from Product p where p.id=?1")
-	Product getOneById(long pid);
+	 
 }
