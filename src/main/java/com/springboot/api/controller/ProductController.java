@@ -49,7 +49,12 @@ public class ProductController {
 		return productService.getAllProduct();
 	}
 	
-	
+	@GetMapping("/product/vendor/customer/{name}/{city}")
+	public  List<Product> getProductsByVendorAndCustomerCity(
+			@PathVariable("name") String name, @PathVariable("city") String city){
+		
+		return productService.getProductsByVendorAndCustomerCity(name,city); 
+	}
 }
 
 
